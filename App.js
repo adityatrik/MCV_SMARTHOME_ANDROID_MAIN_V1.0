@@ -4,11 +4,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { useTheme } from 'react-native-paper';
-import {Home} from './Home';
+import { Home } from './Home';
 import { Setting } from './Setting';
 import { Log } from './Log';
 import { Interval } from './interval';
 import { Server } from './server';
+import { Login } from './Login';
 
 function MenuBar() {
   return (
@@ -24,7 +25,7 @@ function MenuBar() {
               : 'ios-information-circle-outline';
           } else if (route.name === 'Setting') {
             iconName = focused ? 'ios-list' : 'ios-list-outline';
-          } else if(route.name === 'Log'){
+          } else if (route.name === 'Log') {
             iconName = focused ? 'ios-list' : 'ios-list-outline';
           }
 
@@ -36,7 +37,7 @@ function MenuBar() {
       })}
       activeColor="#79D40C"
     >
-      <Tab.Screen 
+      <Tab.Screen
         name="Setting"
         component={Setting}
         options={{
@@ -50,16 +51,16 @@ function MenuBar() {
         options={{
           tabBarIcon: ({ color }) => (
             <Entypo name="home" size={24} color={color} />
-            ),
-          }}
+          ),
+        }}
       />
-        <Tab.Screen name="Log" component={Log}
-          options={{
-            tabBarIcon: ({ color }) => (
-              <Ionicons name="bar-chart" size={24} color={color} />
-            ),
-          }}
-        />
+      <Tab.Screen name="Log" component={Log}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="bar-chart" size={24} color={color} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 }
@@ -73,15 +74,16 @@ export default function App() {
   theme.colors.secondaryContainer = "transperent"
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-         <Stack.Screen
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+        <Stack.Screen name="interval" component={Interval} />
+        <Stack.Screen name="server" component={Server} />
+        <Stack.Screen
           name="MenuBar"
           component={MenuBar}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="interval" component={Interval} />
-        <Stack.Screen name="server" component={Server} />
       </Stack.Navigator>
-  </NavigationContainer>
+    </NavigationContainer>
   );
 }

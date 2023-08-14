@@ -51,30 +51,30 @@ export function Home({ navigation }) {
         {
           stateLampu = "0";
         }
-        axios.post('http://103.123.62.36:3000/api/monitoring', {
-          data: `{"l${lampu_id}":"${stateLampu}"}`,
-        })
-          .then(response => {
-            console.log(response.data);
-            setTempValue(response.data.t);
-            setHumValue(response.data.h);
-            if (response.data.pintu === "1") {
-              setPintuValue("Tertutup");
-            }else if (response.data.pintu === "0") {
-              setPintuValue("Terbuka");
-            }
-            if (response.data.pintu === "0") {
-              setPirValue("Tidak Ada");
-            }else if (response.data.pintu === "1") {
-              setPirValue("Ada Orang");
-            }
-            setGasValue(response.data.lpg_gas);
-            setAsapValue(response.data.smoke_gas)
-            // setIsLoading(false);
-          })
-          .catch(error => {
-            console.log(error);
-          });
+        // axios.post('http://103.123.62.36:3000/api/monitoring', {
+        //   data: `{"l${lampu_id}":"${stateLampu}"}`,
+        // })
+        //   .then(response => {
+        //     console.log(response.data);
+        //     setTempValue(response.data.t);
+        //     setHumValue(response.data.h);
+        //     if (response.data.pintu === "1") {
+        //       setPintuValue("Tertutup");
+        //     }else if (response.data.pintu === "0") {
+        //       setPintuValue("Terbuka");
+        //     }
+        //     if (response.data.pintu === "0") {
+        //       setPirValue("Tidak Ada");
+        //     }else if (response.data.pintu === "1") {
+        //       setPirValue("Ada Orang");
+        //     }
+        //     setGasValue(response.data.lpg_gas);
+        //     setAsapValue(response.data.smoke_gas)
+        //     // setIsLoading(false);
+        //   })
+        //   .catch(error => {
+        //     console.log(error);
+        //   });
         return { ...item, mode: !item.mode };
       }
       return item;
@@ -126,7 +126,7 @@ export function Home({ navigation }) {
         data: `{"l1":"${stateLampu1}","l2":"${stateLampu2}","l3":"${stateLampu3}","l4":"${stateLampu4}","l5":"${stateLampu5}"}` 
       })
         .then(response => {
-          // console.log(response.data);
+          console.log(response.data);
           setTempValue(response.data.t);
             setHumValue(response.data.h);
             if (response.data.pintu === "1") {
@@ -160,7 +160,7 @@ export function Home({ navigation }) {
         .catch(error => {
           console.error(error);
         });
-    }, 500);
+    }, 2000);
 
     return () => {
       clearInterval(interval);
