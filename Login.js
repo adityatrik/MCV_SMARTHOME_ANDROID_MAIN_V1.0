@@ -72,12 +72,12 @@ export function Login() {
                                 onChangeText={(text) => handlePassChange(text)}
                             />
                         </View>
-                        <TouchableOpacity onPress={() => setCekbox(!cekbox)}>
+                        {/* <TouchableOpacity onPress={() => setCekbox(!cekbox)}>
                             {cekbox ?
                                 <Text style={{ marginTop: 15, color: '#fff', fontSize: 20 }}><AntDesign name="checksquare" size={20} color='#fff' /> Remember Password </Text> : <Text style={{ marginTop: 15, color: '#fff', fontSize: 20 }}><Feather name="square" size={20} color='#fff' /> Remember Password </Text>}
 
 
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                         <View style={styles.button}>
                             {/* onPress={() => Auth()} */}
                             <TouchableOpacity onPress={handleSubmitLogin} style={styles.signIn} >
